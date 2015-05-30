@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
 
@@ -82,12 +83,84 @@ public class Main {
             System.out.println();
         }
     }
+    public static void diamond_with_name()
+    {
+        Scanner scan=new Scanner(System.in);
+        int n, j, i,s=1;
+        System.out.println("Enter number of lines\n");
+        n=scan.nextInt();
+        s=n;
+        for (i=0;i<n;i++)
+        {
+            for (j=0;j<s;j++)
+                System.out.print(" ");
+            s--;
+            for (j=0;j<2*i-1;j++)
+                System.out.print("*");
+            System.out.println();
+        }
+        s=0;
+        System.out.println("BILL");
+        for (i=0;i<n;i++)
+        {
+            for (j=0;j<=s;j++)
+                System.out.print(" ");
+            s++;
+            for (j=0;j<2*(n-1-i)-1;j++)
+                System.out.print("*");
+            System.out.println();
+        }
+    }
+    public static void FizzBuzz(int num)
+    {
+        int n=1;
+        while(n<=num)
+        {
+            if(n%3!=0 && n%5!=0)
+                System.out.println(n);
+            else
+            {
+                if(n%3==0 && n%5==0)
+                    System.out.println("FizzBuzz");
+                if(n%3==0)
+                    System.out.println("Fizz");
+                if(n%5==0)
+                    System.out.println("Buzz");
+            }
+            n++;
+        }
+    }
+    public static ArrayList generate(int n)
+    {
+        ArrayList<Integer> pf = new ArrayList();
+        while (n%2 == 0)
+        {
+            pf.add(2);
+            n/=2;
+        }
+        for (int i = 3; i <= Math.sqrt(n); i = i+2)
+        {
+            while (n%i == 0)
+            {
+                pf.add(i);
+                n = n/i;
+            }
+        }
+        if (n > 2)
+            pf.add(n);
+        return pf;
+    }
     public static void main(String[] args) {
-        asterisk();
+        ArrayList pf;
+        /*asterisk();
         horizontal_line();
         vertical_line();
         right_triangle();
         isosceles();
         diamond();
+        diamond_with_name();
+        pf=generate(30);
+        System.out.print("Prime Factors : " + pf);*/
+        FizzBuzz(100);
     }
 }
