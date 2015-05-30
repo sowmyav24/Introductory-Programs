@@ -1,5 +1,7 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class Main {
 
     public static void asterisk(){
@@ -135,30 +137,28 @@ public class Main {
             n++;
         }
     }
-    public static ArrayList generate(int n)
+    public static Set<Integer> generate(int n)
     {
-        ArrayList<Integer> pf = new ArrayList();
-       if(n%2==0)
-       {
-           while (n % 2 == 0) {
+        Set<Integer> pf = new TreeSet<>();
 
+           while (n % 2 == 0) {
+               pf.add(2);
                n /= 2;
            }
-           pf.add(2);
-       }
+
         for (int i = 3; i <= Math.sqrt(n); i = i+2)
         {
-            if(n%i==0)
+            while (n%i == 0){
                 pf.add(i);
-            while (n%i == 0)
                 n = n/i;
+            }
         }
         if (n > 2)
             pf.add(n);
         return pf;
     }
     public static void main(String[] args) {
-        ArrayList pf;
+        Set pf;
         asterisk();
         horizontal_line();
         vertical_line();
@@ -166,7 +166,7 @@ public class Main {
         isosceles();
         diamond();
         diamond_with_name();
-        pf=generate(60);
+        pf= generate(60);
         System.out.println("Prime Factors : " + pf);
         FizzBuzz(100);
     }
