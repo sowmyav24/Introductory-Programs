@@ -29,7 +29,7 @@ public class Main {
     }
     public static void right_triangle()
     {
-        Scanner s=new Scanner(System.in);
+        Scanner s = getScanner();
         int i,j,n;
         System.out.println("Enter the number of lines");
         n=s.nextInt();
@@ -39,6 +39,11 @@ public class Main {
             System.out.println();
         }
     }
+
+    private static Scanner getScanner() {
+        return new Scanner(System.in);
+    }
+
     public static void isosceles()
     {
         Scanner scan=new Scanner(System.in);
@@ -133,18 +138,20 @@ public class Main {
     public static ArrayList generate(int n)
     {
         ArrayList<Integer> pf = new ArrayList();
-        while (n%2 == 0)
-        {
-            pf.add(2);
-            n/=2;
-        }
+       if(n%2==0)
+       {
+           while (n % 2 == 0) {
+
+               n /= 2;
+           }
+           pf.add(2);
+       }
         for (int i = 3; i <= Math.sqrt(n); i = i+2)
         {
-            while (n%i == 0)
-            {
+            if(n%i==0)
                 pf.add(i);
+            while (n%i == 0)
                 n = n/i;
-            }
         }
         if (n > 2)
             pf.add(n);
@@ -159,8 +166,8 @@ public class Main {
         isosceles();
         diamond();
         diamond_with_name();
-        pf=generate(30);
-        System.out.print("Prime Factors : " + pf);
+        pf=generate(60);
+        System.out.println("Prime Factors : " + pf);
         FizzBuzz(100);
     }
 }
