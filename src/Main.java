@@ -152,7 +152,7 @@ public class Main {
     }
     public static void main(String[] args) {
         ArrayList pf;
-        /*asterisk();
+        asterisk();
         horizontal_line();
         vertical_line();
         right_triangle();
@@ -160,7 +160,7 @@ public class Main {
         diamond();
         diamond_with_name();
         pf=generate(30);
-        System.out.print("Prime Factors : " + pf);*/
+        System.out.print("Prime Factors : " + pf);
         FizzBuzz(100);
     }
 }
